@@ -1,0 +1,16 @@
+import time
+import datetime
+
+with open('times.txt', 'r') as r_t:
+    start = datetime.timedelta(seconds=int(r_t.readline()))
+
+try:
+    while True:
+        with open('times.txt', 'w') as w_t:
+            start = start + datetime.timedelta(seconds=1)
+            print(f'\r{start}', end='')
+            w_t.write(str(start.seconds))
+            time.sleep(1)
+
+except KeyboardInterrupt:
+    pass
