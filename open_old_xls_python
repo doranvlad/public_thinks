@@ -1,0 +1,10 @@
+import OleFileIO_PL     # pip install OleFileIO_PL
+import pandas as pd     # pip install pandas
+
+path = 'example.xls'
+with open(path, 'rb') as file:
+    ole = OleFileIO_PL.OleFileIO(file)
+    if ole.exists('Workbook'):
+        d = ole.openstream('Workbook')
+        x = pd.read_excel(d, engine='xlrd')
+print(x)
